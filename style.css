@@ -1,0 +1,51 @@
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;  
+  padding: 20px;
+}
+
+.border {
+  border: 2px solid #555;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 250px;
+  background-color: aqua;
+}
+
+.border h3 {
+  margin: 5px 0;
+  color: #333;
+}
+
+.btnAgregar {
+  margin-top: 10px;
+  background-color: #ff7b00;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btnAgregar:hover {
+  background-color: #e56f00;
+}
+
+#titulo {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #333;
+}
+
+#total {
+  text-align: center;
+  font-size: 22px;
+  margin-top: 20px;
+  color: #2a8f2a;
+  font-weight: bold;
+}

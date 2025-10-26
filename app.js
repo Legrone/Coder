@@ -1,65 +1,52 @@
-function saludar(nombre) {
-  console.log('Hola: ' + nombre);
-}
+const helados = [
+    {id: 1, nombre: "Cucurucho", precio: 6000},
+    {id: 2, nombre: "Kilo", precio: 10000},
+    {id: 3, nombre: "Cuarto", precio: 5000},
+    {id: 4, nombre: "Vaso chico", precio: 2000}, 
+    {id: 5, nombre: "Batido", precio: 4000}
+];
 
-let nombreUser = prompt("Ingrese su nombre");
-saludar(nombreUser);
+const carrito = [];
+let total = 0;
 
-//a futuro hacer: TENGO EL BOTON DE PEDIDO. TAMAÑOS, SI QUIERE PREENVASADO (TRUE O FALSE, EN CASO DE TRUE DAR OPCIONES), SABORES.
+const cargarDOM = () => {
+    const prodsContainer = document.getElementById("juan");
+    const titulo = document.getElementById("titulo");
+    const totalDiv = document.getElementById("total");
 
-const preferencias = [];
+    titulo.innerText = "HELADERIA FTC ORDEN";
 
-function eleccion(){
-    let total = 0;
-    let seleccion;
-    do {
-    seleccion = prompt(
-        "Bienvenido/a a la heladeria, elija su preferencia:\n1. Cucurucho, \n2. vaso chico, \n3 kilo, \n4 cuarto, \n5 preenvasado, \n6 finalizar"
-    );
+    helados.forEach((helado) => {
+        let div = document.createElement("div");
+        div.className = "border";
+        div.innerHTML = `
+            <span>${helado.id}</span>
+            <h3>${helado.nombre}</h3>
+            <p>$${helado.precio}</p>
+            <button data-id=${helado.id} class="btnAgregar">Agregar al carrito</button>
+        `;
+        prodsContainer.appendChild(div);
+    });
 
-    switch (seleccion) {
-        case '1':
-        total = total + 3000;
-        preferencias.push('Cucurucho');
-        console.log('Tu total hasta el momento es de :' + total);
-        break;
+    let btnAgregar = document.querySelectorAll(".btnAgregar");
+    btnAgregar.forEach((but) => {
+        but.addEventListener("click", (e) => {
+            let heladoEncontrado = helados.find((h) => h.id == e.target.dataset.id);
+            carrito.push(heladoEncontrado);
+            localStorage.setItem(heladoEncontrado.nombre, heladoEncontrado.precio);
 
-        case '2':
-        total = total + 1000;
-        preferencias.push('Vaso Chico');
-        console.log('Tu total hasta el momento es de :' + total);
-        break;
+            total += heladoEncontrado.precio;
 
-        case '3':
-        total = total + 13000;
-        preferencias.push('Kilo');
-        console.log('Tu total hasta el momento es de :' + total);
-        break;
+            totalDiv.innerText = `Total: $${total}`;
 
-        case '4':
-        total = total + 6000;
-        preferencias.push('Cuarto');
-        console.log('Tu total hasta el momento es de :' + total);
-        break;
+            console.log("Carrito:", carrito);
+            console.log("Total actual:", total);
+        });
+    });
+};
 
-        case '5':
-        total = total + 100000;
-        preferencias.push('Preenvasado');
-        console.log('Tu total hasta el momento es de :' + total);
-        break;
+cargarDOM();
 
-        default:
-        console.log('Gracias por su seleccion');
-        break;
-    }
 
-    } while (seleccion <= 5);
-    return total;
-}
-
-let total = eleccion();
-let fin = confirm("desea guardar lo pedido?")
-    if(fin == true) {alert("El total de tu compra fue: " + total.toString())}
-    else {
-        let total = eleccion() 
-        alert("El total de tu compra fue: " + total.toString())};
+// A FUTURO:
+// agregar botones de compra y limpieza de carrito, en caso de compra generar un ticket con informacion extraida por medio de JSON.
