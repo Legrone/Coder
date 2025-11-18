@@ -1,0 +1,7 @@
+[
+  {"id": 1, "nombre": "Cucurucho", "precio": 6000},
+  {"id": 2, "nombre": "Kilo", "precio": 10000},
+  {"id": 3, "nombre": "Cuarto", "precio": 5000},
+  {"id": 4, "nombre": "Vaso chico", "precio": 2000},
+  {"id": 5, "nombre": "Batido", "precio": 4000}
+]

@@ -1,24 +1,59 @@
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: #f5f7fb;
+}
+
+#titulo {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+main {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Productos */
 .contenedor {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 20px;  
   padding: 20px;
+  max-width: 800px;
 }
 
+/* Tarjeta */
 .border {
   border: 2px solid #555;
   border-radius: 10px;
   padding: 10px 20px;
-  width: 250px;
-  background-color: aqua;
+  width: 220px;
+  background-color: #e6ffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .border h3 {
   margin: 5px 0;
   color: #333;
+  font-size: 18px;
 }
 
+.border p {
+  margin: 4px 0;
+  font-weight: bold;
+}
+
+/* Botón agregar */
 .btnAgregar {
   margin-top: 10px;
   background-color: #ff7b00;
@@ -29,23 +64,66 @@
   cursor: pointer;
   transition: background-color 0.2s;
 }
+.btnAgregar:hover { background-color: #e56f00; }
 
-.btnAgregar:hover {
-  background-color: #e56f00;
+/* Carrito lateral */
+#carrito-section {
+  width: 320px;
+  padding: 16px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-#titulo {
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-  margin-top: 20px;
-  color: #333;
+#lista-carrito {
+  min-height: 120px;
+  margin-bottom: 12px;
+}
+
+.item-carrito {
+  display:flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 14px;
 }
 
 #total {
-  text-align: center;
-  font-size: 22px;
-  margin-top: 20px;
+  text-align: left;
+  font-size: 18px;
+  margin-top: 10px;
   color: #2a8f2a;
   font-weight: bold;
+}
+
+/* Mensaje de error en UX*/
+.error-message {
+  color: #a33;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  main { flex-direction: column; align-items: stretch; }
+  #carrito-section { width: auto; }
+}
+
+.btnPagar {
+  margin-top: 10px;
+  background-color: #2a8f2a;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btnPagar:hover { background-color: #1f6f1f; }
+
+.mensaje-pago {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
 }

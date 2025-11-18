@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"/>
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heladería - Simulador de Compra</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <h2 id="titulo"></h2>
-    <div id="juan" class="contenedor"></div>
-    <h3 id="total">Total: $0</h3>
-    <script src="app.js"></script>
+  <h2 id="titulo"></h2>
+
+  <main>
+    <section id="productos-section">
+      <div id="juan" class="contenedor"></div>
+      <div id="errorFetch" class="error-message" aria-live="polite"></div>
+    </section>
+
+    <aside id="carrito-section">
+      <h3>Carrito</h3>
+      <div id="lista-carrito"></div>
+      <h3 id="total">Total: $0</h3>
+
+      <div style="display: flex; gap: 10px;">
+        <button id="vaciarCarritoBtn" class="btnAgregar">Vaciar carrito</button>
+        <button id="pagarBtn" class="btnPagar">Pagar</button>
+      </div>
+
+      <p id="mensajePago" class="mensaje-pago"></p>
+    </aside>
+  </main>
+
+  <script src="cart.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
